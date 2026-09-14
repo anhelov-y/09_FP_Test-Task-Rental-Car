@@ -1,0 +1,186 @@
+.filterContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 50px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
+
+.label {
+    font-family: var(--font-manrope), sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    color: #8a8a89;
+}
+
+.selectTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    padding: 0 18px;
+    background-color: #f7f7fb;
+    border: none;
+    border-radius: 14px;
+    font-family: var(--font-manrope), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #101828;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.selectBrand {
+    width: 224px;
+}
+
+.selectPrice {
+    width: 196px;
+}
+
+.chevronIcon {
+    width: 16px;
+    height: 16px;
+    stroke: #101828;
+    transition: transform 0.3s ease;
+}
+
+.chevronOpen {
+    transform: rotate(180deg);
+}
+
+.dropdownList {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    max-height: 272px;
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    list-style: none;
+    padding: 14px 8px 14px 18px;
+    margin: 0;
+    overflow-y: auto;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.dropdownList::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dropdownList::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dropdownList::-webkit-scrollbar-thumb {
+    background: #dadde1;
+    border-radius: 10px;
+}
+
+.dropdownItem {
+    padding: 8px 0;
+    font-family: var(--font-manrope), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: rgba(16, 24, 40, 0.3);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.dropdownItem:hover,
+.dropdownItem.selected {
+    color: #101828;
+}
+
+.rangeInputs {
+    display: flex;
+}
+
+.inputLeft,
+.inputRight {
+    width: 160px;
+    height: 48px;
+    padding: 0 24px;
+    background-color: #f7f7fb;
+    border: none;
+    font-family: var(--font-manrope), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #101828;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.inputLeft {
+    border-radius: 14px 0 0 14px;
+    border-right: 1px solid rgba(138, 138, 137, 0.2);
+}
+
+.inputRight {
+    border-radius: 0 14px 14px 0;
+}
+
+.inputLeft::-webkit-outer-spin-button,
+.inputLeft::-webkit-inner-spin-button,
+.inputRight::-webkit-outer-spin-button,
+.inputRight::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.buttonWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 26px;
+}
+
+.searchButton {
+    width: 156px;
+    height: 44px;
+    background-color: #00aad4;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-family: var(--font-manrope), sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.searchButton:hover {
+    background-color: #0093b8;
+}
+
+.clearLink {
+    background: none;
+    border: none;
+    color: #8d929a;
+    font-family: var(--font-manrope), sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 8px;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.clearLink:hover {
+    color: #101828;
+}

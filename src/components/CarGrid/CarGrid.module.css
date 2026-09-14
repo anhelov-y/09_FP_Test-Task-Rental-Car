@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(274px, 1fr));
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.loadMoreBtn {
+    background: transparent;
+    border: none;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: underline;
+    color: #3470ff;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.loadMoreBtn:hover {
+    color: #0b44cd;
+}

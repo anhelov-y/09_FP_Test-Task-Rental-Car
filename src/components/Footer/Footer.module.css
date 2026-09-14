@@ -1,0 +1,37 @@
+.footer {
+    width: 100%;
+    border-top: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+    padding: 24px 0;
+    margin-top: auto;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: #475467;
+    font-size: 14px;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: right;
+}
+
+.wrap a {
+    color: #3470ff;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.wrap a:hover {
+    color: #0b44cd;
+}
