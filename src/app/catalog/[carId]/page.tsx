@@ -1,77 +1,41 @@
-'use client';
-
-import { useEffect, useState, use } from 'react';
-import Image from 'next/image';
+import React from 'react';
 import { fetchCarById } from '@/lib/api/cars';
-import { Car } from '@/types/car';
 import RentalForm from '@/components/RentalForm/RentalForm';
-import css from './CarDetails.module.css';
+import Image from 'next/image';
 
-interface PageProps {
-  params: Promise<{ carId: string }>;
+interface CarDetailsPageProps {
+  params: {
+    carId: string;
+  };
 }
 
-export default function CarDetailsPage({ params }: PageProps) {
-  const { carId } = use(params);
-  const [car, setCar] = useState<Car | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+export default async function CarDetailsPage({ params }: CarDetailsPageProps) {
+  const { carId } = params;
+  const car = await fetchCarById(carId);
 
-  useEffect(() => {
-    const getCar = async () => {
-      try {
-        const data = await fetchCarById(carId);
-        setCar(data);
-      } catch (error) {
-        console.error('Failed to fetch car details:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    getCar();
-  }, [carId]);
-
-  if (isLoading) return <p className={css.loading}>Loading car details...</p>;
-  if (!car) return <p className={css.error}>Car not found</p>;
-
-  const addressParts = car.address ? car.address.split(', ') : [];
-  const city = addressParts[addressParts.length - 2] || '';
-  const country = addressParts[addressParts.length - 1] || '';
+  if (!car) {
+    return <div>Car not found</div>;
+  }
 
   return (
-    <main className={css.container}>
-      <div className={css.content}>
-        <div className={css.imageWrap}>
+    <main style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ display: 'flex', gap: '40px' }}>
+        <div style={{ position: 'relative', width: '600px', height: '400px' }}>
           <Image
-            src={car.img || '/placeholder.png'}
+            src={car.img || '/placeholder.jpg'}
             alt={`${car.make} ${car.model}`}
             fill
-            className={css.image}
+            style={{ objectFit: 'cover', borderRadius: '14px' }}
+            priority
           />
         </div>
-
-        <div className={css.info}>
-          <h1 className={css.title}>
-            {car.make} <span className={css.accent}>{car.model}</span>, {car.year}
-          </h1>
-
-          <p className={css.meta}>
-            {city} | {country} | Id: {car.id} | Year: {car.year} | Type: {car.type}
-          </p>
-
-          <p className={css.price}>Rental Price: <span>{car.rentalPrice}</span></p>
-
-          <p className={css.description}>{car.description}</p>
-
-          <div className={css.section}>
-            <h3>Rental Conditions:</h3>
-            <div className={css.tags}>
-              <span className={css.tag}>{car.rentalConditions}</span>
-              <span className={css.tag}>Mileage: {car.mileage.toLocaleString()}</span>
-            </div>
-          </div>
-
-          <RentalForm />
+        
+        <div style={{ flex: 1 }}>
+          <h1>{car.make} {car.model}, {car.year}</h1>
+          <p style={{ fontSize: '24px', fontWeight: 'bold', margin: '20px 0' }}>{car.rentalPrice}</p>
+          <p style={{ marginBottom: '20px' }}>{car.description}</p>
+          
+          <RentalForm carId={carId} />
         </div>
       </div>
     </main>
